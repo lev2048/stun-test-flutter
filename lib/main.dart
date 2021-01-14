@@ -1,5 +1,6 @@
 import 'dart:ffi' as ffi; // For FFI
 import 'package:ffi/ffi.dart';
+// ignore: implementation_imports
 import 'package:ffi/src/utf8.dart';
 import 'dart:convert';
 import 'dart:math';
@@ -45,7 +46,8 @@ class Home extends StatefulWidget {
 
 typedef stun_test_func = ffi.Pointer<Utf8> Function(); // FFI fn signature
 typedef StunTest = ffi.Pointer<Utf8> Function(); // Dart fn signature
-final stunTestLib = ffi.DynamicLibrary.open("stun.dll");
+final stunTestLib =
+    ffi.DynamicLibrary.open("data\\flutter_assets\\assets\\stun.dll");
 final StunTest runStunTest = stunTestLib
     .lookup<ffi.NativeFunction<stun_test_func>>('RunTest')
     .asFunction();
